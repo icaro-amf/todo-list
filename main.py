@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends #importa lib para criar a API e tratar exceções, gerencia as rotas e tudo relativo a API
 from typing import List #fastapi exige a declaração de lista e optional para entender o formato do dado passado
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 
 from database import engine, get_db, Base
 from schemas import TodoCreate, TodoResponse
