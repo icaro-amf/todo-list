@@ -15,4 +15,4 @@ def get_db():
     try:
         yield db #entrega a sessão(db) para a função que chamou o get_db() e espera a função terminar para fechar a sessão.
     finally:
-        db.close()#encerra conexao
+        db.close() #encerra conexao

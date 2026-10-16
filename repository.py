@@ -12,3 +12,9 @@ class TodoRepository:
         self.db.commit()
         self.db.refresh(db_todo)
         return db_todo
+
+    def get_all(self):
+        return self.db.query(TodoDB).all()
+
+    def get_by_id(self, todo_id: int):
+        return self.db.query(TodoDB).filter(TodoDB.id == todo_id).first()

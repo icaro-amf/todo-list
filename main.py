@@ -15,3 +15,16 @@ app = FastAPI(title="To-do List API", description="Primeira API Python, uma to-d
 def create_todo(todo: TodoCreate, db: Session = Depends(get_db)):
     repo = TodoRepository(db)
     return repo.create(todo)
+
+@app.get("/todos/", response_model=List[TodoResponse]) #rota get para listar todos os "todos"
+def get_all_todos(db: Session = Depends(get_db)):
+    repo = TodoRepository(db)
+    return repo.get_all()
+
+@app.get("/todos/{todo_id}", response_model=TodoResponse) #rota get para listar um "todo" específico
+def get_todo_by_id(todo_id: int, db: Session = Depends(get_db)):
+    repo = TodoRepository(db)
+    todo = repo.get_by_id(todo_id)
+    if not todo:
+        raise HTTPException(status_code=404, detail="Todo not found")
+    return todo
