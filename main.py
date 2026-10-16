@@ -21,10 +21,19 @@ def get_all_todos(db: Session = Depends(get_db)):
     repo = TodoRepository(db)
     return repo.get_all()
 
-@app.get("/todos/{todo_id}", response_model=TodoResponse) #rota get para listar um "todo" específico
+@app.get("/todos/{todo_id}", response_model=TodoResponse) #rota get para listar um "todo" pelo id
 def get_todo_by_id(todo_id: int, db: Session = Depends(get_db)):
     repo = TodoRepository(db)
     todo = repo.get_by_id(todo_id)
     if not todo:
         raise HTTPException(status_code=404, detail="Todo not found")
     return todo
+
+@app.put("/todos/{todo_id}", response_model=TodoResponse) #rota put para atualizar um "todo" pelo id
+def update_todo(todo_id: int, db: Session = Depends(get_db)):
+    repo = TodoRepository(db)
+    new_todo = repo.update_by_id(todo_id)
+    if not new_todo:
+        raise HTTPException(status_code=404, detail="Todo not found")
+ 
+    return new_todo
