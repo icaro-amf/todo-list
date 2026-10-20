@@ -49,7 +49,7 @@ SQLALCHEMY_DATABASE_URL=postgresql://seu_usuario:sua_senha@localhost:5432/todo_l
 
 **5. Execute a aplicação:**
 ```bash
-python -m uvicorn main:app --reload
+python -m uvicorn src.main:app --reload
 ```
 
 A API estará disponível em: [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -68,8 +68,6 @@ O FastAPI gera a documentação automaticamente. Com a API rodando, acesse no se
 | `POST` | `/todos/` | Cria uma nova tarefa |
 | `GET` | `/todos/` | Lista todas as tarefas |
 | `GET` | `/todos/{id}` | Busca uma tarefa específica |
-
-> **Nota:** Endpoints de atualização (`PUT`) e exclusão (`DELETE`) ainda não foram implementados.
 
 ## 📁 Estrutura do Projeto
 

@@ -20,14 +20,24 @@ class TodoRepository:
         return self.db.query(TodoDB).filter(TodoDB.id == todo_id).first()
 
     def update_by_id(self, todo_id: int, att_todo = TodoCreate):
-        original = self.db.query(TodoDB).filter(TodoDB.id == todo_id).first()
-        if not original:
+        updated = self.get_by_id(todo_id)
+        if not updated:
             return None
 
-        original.title = att_todo.title
-        original.description = att_todo.description
-        original.completed = att_todo.completed
+        updated.title = att_todo.title
+        updated.description = att_todo.description
+        updated.completed = att_todo.completed
 
         self.db.commit()
-        self.db.refresh(original)
-        return original
+        self.db.refresh(updated)
+        return updated
+
+    def delete_by_id(self, todo_id: int):
+        deleted = self.get_by_id(todo_id)
+
+        if not deleted:
+            return False
+
+        self.db.delete(deleted)
+        self.db.commit()
+        return True
