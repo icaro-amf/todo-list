@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models import TodoDB
-from schemas import TodoCreate
+from src.model import TodoDB
+from src.schemas import TodoCreate
 
 class TodoRepository:
     def __init__(self, db: Session):

@@ -26,7 +26,7 @@ cd todo-list
 **2. Crie e ative um ambiente virtual:**
 ```bash
 # No Windows:
-python -m venv .venv
+py -m venv .venv
 .\.venv\Scripts\activate
 
 # No Linux/Mac/WSL:

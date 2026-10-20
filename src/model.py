@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
-from database import Base
+from src.database import Base
 
 class TodoDB(Base): #define os parametros da tabela do banco de dados
     __tablename__ = "todos"
