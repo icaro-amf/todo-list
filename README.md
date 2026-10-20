@@ -68,20 +68,26 @@ O FastAPI gera a documentação automaticamente. Com a API rodando, acesse no se
 | `POST` | `/todos/` | Cria uma nova tarefa |
 | `GET` | `/todos/` | Lista todas as tarefas |
 | `GET` | `/todos/{id}` | Busca uma tarefa específica |
+| `UPDATE` | `/todos/{id}` | Atualiza uma tarefa específica |
+| `DELETE` | `/todos/{id}` | Deleta uma tarefa específica |
 
 ## 📁 Estrutura do Projeto
 
 ```
 todo-list/
-├── main.py              # Ponto de entrada da aplicação
-├── database.py          # Configuração do banco de dados
-├── models.py            # Modelos SQLAlchemy
-├── schemas.py           # Schemas Pydantic (validação)
-├── repository.py        # Camada de acesso a dados
-├── requirements.txt     # Dependências do projeto
+├── src/
+│   ├── __init__.py      # Torna a pasta um pacote Python
+│   ├── main.py          # Ponto de entrada da aplicação e rotas FastAPI
+│   ├── database.py      # Configuração do banco de dados e conexão
+│   ├── model.py         # Modelos SQLAlchemy (tabelas do banco)
+│   ├── schemas.py       # Schemas Pydantic (validação de dados)
+│   └── repository.py    # Camada de acesso a dados (operações CRUD)
+├── .venv/               # Ambiente virtual (não versionado)
 ├── .env                 # Variáveis de ambiente (não versionado)
 ├── .env.example         # Exemplo de variáveis de ambiente
-└── .venv/               # Ambiente virtual (não versionado)
+├── .gitignore           # Regras de exclusão do Git
+├── README.md            # Documentação do projeto
+└── requirements.txt     # Dependências do projeto
 ```
 
 ## 📝 Variáveis de Ambiente
